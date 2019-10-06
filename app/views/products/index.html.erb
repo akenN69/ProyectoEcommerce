@@ -2,8 +2,27 @@
 <p>Find me in app/views/products/index.html.erb</p>
 
 
-<% @products.each do |product| %>
- <%= product.photo %>
- <%= product.name %>
- <%= product.price %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <% @products.each_slice(3) do |product| %>
+      <% product.each do |product| %>
+        <div class="col">
+          <div class="card">
+            <%= image_tag product.photo, class: 'card-img-top' %>
+            <div class="card-body">
+              <h5> <%= product.name %> </h5>
+              <%= link_to "Agregar al carro", class: "btn btn-primary" %>
+              <%
+=begin%>
+ <%= link_to "Agregar al carro", product_orders_path(product), class: 'btn btn-success', method: :post  %> 
+<%
+=end%>
+              
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="w-100" style="margin-top:20px;"> </div>
+    <% end %>
+  </div>
+</div>
