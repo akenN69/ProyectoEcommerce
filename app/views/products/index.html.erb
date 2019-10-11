@@ -1,7 +1,6 @@
 <h1>Products#index</h1>
 <p>Find me in app/views/products/index.html.erb</p>
 
-
 <div class="container">
   <div class="row">
     <% @products.each_slice(3) do |row| %>
@@ -11,7 +10,7 @@
             <%= image_tag product.photo, class: 'card-img-top' %>
             <div class="card-body">
               <h5> <%= product.name %> </h5>
-              <%= link_to "Agregar al carro", class: 'btn btn-primary' %>
+              <%= link_to  "Agregar al carro", products_index_path, class: 'btn btn-primary' %>
               <%
 =begin%>
  <%= link_to "Agregar al carro", product_orders_path(product), class: 'btn btn-success', method: :post  %> 
